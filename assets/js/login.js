@@ -27,7 +27,7 @@ layui.form.verify({
 $('#form_reg').on('submit', function(e) {
         e.preventDefault()
         data = $(this).serialize();
-        $.post('http://www.liulongbin.top:3007/api/reguser', data, function(res) {
+        $.post('/api/reguser', data, function(res) {
             if (res.status != 0) {
                 return layer.msg(res.message);
             }
@@ -40,7 +40,7 @@ $('#form_login').on('submit', function(e) {
     e.preventDefault()
     data = $(this).serialize();
     console.log(data);
-    $.post('http://www.liulongbin.top:3007/api/login', data, function(res) {
+    $.post('/api/login', data, function(res) {
         if (res.status != 0) {
             return layer.msg(res.message);
         }
