@@ -1,0 +1,20 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.layui-form {
+    padding-top: 15px;
+    padding-left: 15px;
+    width: 500px;
+}
+
+.layui-form-label::after {
+    content: ":";
+}
+
+.layui-form .layui-form-item:nth-child(n+3) label::before {
+    content: '*';
+    color: red;
+}
