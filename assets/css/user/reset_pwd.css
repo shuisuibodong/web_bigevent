@@ -1,0 +1,8 @@
+body {
+    padding: 15px;
+    background-color: #eeeeee;
+}
+
+.layui-form-item .layui-input-inline {
+    width: 300px;
+}
