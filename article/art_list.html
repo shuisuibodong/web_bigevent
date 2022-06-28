@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/lib/layui-v2.6.8/css/layui.css">
+    <link rel="stylesheet" href="/assets/css/article/art_list.css">
+</head>
+
+<body>
+    <div class="layui-card">
+        <div class="layui-card-header">文章列表</div>
+        <div class="layui-card-body">
+            <div class="publsh">
+                <!-- 定义文章筛选的form -->
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <select name="cate_id" id="cateID">
+                              </select>
+                        </div>
+                        <div class="layui-inline">
+                            <select name="state" lay-verify="">
+                                <option value="">所有状态</option>
+                                <option value="发布">发布</option>
+                                <option value="草稿">草稿</option>
+                              </select>
+                        </div>
+                        <div class="layui-inline">
+                            <button class="layui-btn btnShaiXuan" lay-submit lay-filter="formDemo">筛选</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+
+
+                </form>
+                <!-- 发表文章 带跳转的按钮 -->
+                <a href="/article/art_pub.html" target="fm" class="layui-btn">发表文章</a>
+            </div>
+            <!-- 文章列表区域 -->
+            <table class="layui-table">
+                <colgroup>
+                    <col>
+                    <col>
+                    <col width="200">
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>文章标题</th>
+                        <th>文章分类</th>
+                        <th>发表时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div id="pageBox"></div>
+    </div>
+    <script type="html/text" id="tpl_table">
+        {{each data}}
+        <tr>
+            <td>{{$value.title}}</td>
+            <td>{{$value.cate_name}}</td>
+            <td>{{$value.pub_date|dateFormat}}</td>
+            <td>{{$value.state}}</td>
+            <td><button type="button" class="layui-btn layui-btn-danger layui-btn-xs btnDel" data-id={{$value.Id}}>删除</button></td>
+        </tr>
+        {{/each}}
+    </script>
+    <script type="html/text" id="tpl_Cate">
+        <option value="">文章分类</option>
+        {{each data}}
+        <option value={{$value.Id}}>{{$value.name}}</option>
+        {{/each}}
+    </script>
+    <script src="/assets/lib/layui-v2.6.8/layui.js"></script>
+    <script src="/assets/lib/jquery.js"></script>
+    <script src="/assets/js/baseApi.js"></script>
+    <script src="/assets/lib/template-web.js"></script>
+    <script src="/assets/js/article/art_list.js"></script>
+</body>
+
+</html>
